@@ -1,3 +1,3 @@
 # DGitHub
 Introdução
-Seja bem vinda ao site!
+Seja bem vindo(a) ao site!
