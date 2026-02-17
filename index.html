@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D-Connect | Internet Rápida</title>
+<meta name="description" content="D-Connect — Internet rápida entregue via WhatsApp. Compre planos diários diretamente por DM.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  background:#111;
+  border-bottom:2px solid #ff6a00;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.nav{
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand h1{
+  color:#ff6a00;
+  font-size:20px;
+}
+
+.brand p{
+  font-size:12px;
+  color:#ccc;
+}
+
+.slogan{
+  text-align:center;
+  padding:8px;
+  background:#111;
+  color:#ff6a00;
+  font-weight:bold;
+  border-top:1px solid #222;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+h2{
+  text-align:center;
+  color:#ff6a00;
+  margin:25px 0 10px 0;
+}
+
+.info{
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:15px;
+}
+
+/* PLANOS FIXOS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#1b1b1b;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.3s;
+  border:1px solid #2a2a2a;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 6px 20px rgba(255,106,0,0.3);
+}
+
+.size{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.price{
+  font-size:22px;
+  color:#25d366;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+.desc{
+  font-size:12px;
+  color:#aaa;
+  margin-top:6px;
+}
+
+/* DESTAQUES */
+.highlight-grid{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.highlight-card{
+  background:#1b1b1b;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  width:180px;
+  cursor:pointer;
+  transition:0.3s;
+  border:1px solid #2a2a2a;
+}
+
+.highlight-card:hover{
+  transform:scale(1.05);
+  box-shadow:0 6px 20px rgba(255,106,0,0.3);
+}
+
+/* BOTÕES FIXOS */
+.whatsapp-btn,
+.group-btn{
+  position:fixed;
+  bottom:20px;
+  padding:12px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  box-shadow:0 0 20px rgba(37,211,102,0.5);
+}
+
+.whatsapp-btn{
+  right:20px;
+  background:#25d366;
+}
+
+.group-btn{
+  left:20px;
+  background:linear-gradient(90deg,#25d366,#1fae4d);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  color:#888;
+  margin:50px 0 20px;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <i class="fa-solid fa-wifi" style="color:#ff6a00;font-size:24px;"></i>
+      <div>
+        <h1>D-Connect</h1>
+        <p>Internet via WhatsApp</p>
+      </div>
+    </div>
+  </div>
+  <div class="slogan">D-CONNECT — O SEU LUGAR DE INTERNET</div>
+</header>
+
+<div class="container">
+
+  <h2>📶 Planos Diários</h2>
+  <p class="info">🕒 Validade: 24h após ativação • 📲 Entrega rápida via WhatsApp</p>
+
+  <div class="grid" id="planos"></div>
+
+  <h2>✨ Destaques</h2>
+  <div class="highlight-grid" id="destaques"></div>
+
+</div>
+
+<a href="https://wa.me/258850714233?text=Posso%20comprar%20megas%3F" target="_blank" class="whatsapp-btn">
+  <i class="fab fa-whatsapp"></i> Comprar
+</a>
+
+<a href="https://chat.whatsapp.com/IDiA4lHwgUa3LnCyXWzP1S" target="_blank" class="group-btn">
+  <i class="fab fa-whatsapp"></i> Grupo
+</a>
+
+<footer>
+  Criado por Daúdo OmarJr • D-Connect © 2026
+</footer>
+
+<script>
+const planos = [
+["1GB","25 MT"],
+["2GB","50 MT"],
+["3GB","75 MT"],
+["4GB","100 MT"],
+["5GB","125 MT"],
+["6GB","150 MT"],
+["7GB","175 MT"],
+["8GB","200 MT"],
+["9GB","225 MT"],
+["10GB","250 MT"]
+];
+
+const numero = "258850714233";
+
+/* Render planos fixos */
+const grid = document.getElementById("planos");
+
+planos.forEach(p=>{
+  const div = document.createElement("div");
+  div.className="card";
+  div.innerHTML=`
+    <div class="size">${p[0]}</div>
+    <div class="price">${p[1]}</div>
+    <div class="desc">Enviar pedido via WhatsApp</div>
+  `;
+  div.onclick = ()=>{
+    window.open(`https://wa.me/${numero}?text=Olá,%20quero%20comprar%20${p[0]}%20por%20${p[1]}`, "_blank");
+  }
+  grid.appendChild(div);
+});
+
+/* Destaques rotativos (3 cartões) */
+const destaques = document.getElementById("destaques");
+let indice = 0;
+
+function atualizarDestaques(){
+  destaques.innerHTML="";
+  for(let i=0;i<3;i++){
+    const plano = planos[(indice+i)%planos.length];
+    const card = document.createElement("div");
+    card.className="highlight-card";
+    card.innerHTML=`
+      <div class="size">${plano[0]}</div>
+      <div class="price">${plano[1]}</div>
+    `;
+    card.onclick=()=>{
+      window.open(`https://wa.me/${numero}?text=Olá,%20quero%20comprar%20${plano[0]}%20por%20${plano[1]}`, "_blank");
+    }
+    destaques.appendChild(card);
+  }
+  indice = (indice+1)%planos.length;
+}
+
+atualizarDestaques();
+setInterval(atualizarDestaques,3000);
+</script>
+
+</body>
+</html>
